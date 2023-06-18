@@ -1,3 +1,4 @@
+package coffee;
 public class WithSugar extends CoffeeDecorator{
 
     public WithSugar (Coffee c){

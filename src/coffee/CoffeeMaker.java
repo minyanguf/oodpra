@@ -1,3 +1,4 @@
+package coffee;
 public class CoffeeMaker {
     public Coffee makeCoffee(CoffeePack cp){
         Coffee res = new SimpleCoffee();

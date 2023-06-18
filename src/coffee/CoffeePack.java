@@ -1,3 +1,4 @@
+package coffee;
 public class CoffeePack {
     private int neededMilk;
 

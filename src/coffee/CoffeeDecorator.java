@@ -1,3 +1,4 @@
+package coffee;
 abstract class CoffeeDecorator implements Coffee{
     protected final Coffee decoratedCoffee;
 
