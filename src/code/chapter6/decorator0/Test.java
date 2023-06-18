@@ -13,12 +13,11 @@ public class Test {
         ConcreteComponent c = new ConcreteComponent();
         ConcreteDecoratorA d1 = new ConcreteDecoratorA();
         ConcreteDecoratorB d2 = new ConcreteDecoratorB();
-        d2.Operation();
 
-//        d1.SetComponent(c);	//首先用d1来包装c
-//        d2.SetComponent(d1);//再用有来包装d1
-//        //这里由于SetComponent   所以d2 里面的compoment 是d1  然后看下面super 时候 就是运行component的operation 所以最后是d1
-//        d2.Operation();   	//最终执行d2的Operation()
+        d1.SetComponent(c);	//首先用d1来包装c
+        d2.SetComponent(d1);//再用有来包装d1
+        //这里由于SetComponent   所以d2 里面的compoment 是d1  然后看下面super 时候 就是运行component的operation 所以最后是d1
+        d2.Operation();   	//最终执行d2的Operation()
 
 
         System.out.println();
