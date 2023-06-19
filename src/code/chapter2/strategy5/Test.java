@@ -32,6 +32,7 @@ public class Test {
 
 				
 				//根据用户输入，将对应的策略对象作为参数传入CashContext对象中
+				//主要是这里 根据 discount 是 1 2 3 来create 不同的 cashcontext
 				CashContext cc = new CashContext(discount);
 				
 				//通过Context的getResult方法的调用，可以得到收取费用的结果

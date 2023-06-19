@@ -5,6 +5,7 @@ public class CashContext {
     private CashSuper cs;   //声明一个CashSuper对象
 
     //通过构造方法，传入具体的收费策略
+    //这里 根据不同的 input 来create 不同的strategy
     public CashContext(int cashType){
         switch(cashType){
             case 1:
