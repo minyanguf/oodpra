@@ -24,6 +24,7 @@ interface Coffee{
 abstract class CoffeeDec implements Coffee{
     protected Coffee c;
 
+    //这里有没有constructor无所谓 重点是要有setcomp 方法
     public void setCoffee(Coffee c){
         this.c =c;
     }
@@ -43,7 +44,8 @@ abstract class CoffeeDec implements Coffee{
 
 class WithSugar extends CoffeeDec{
     public double getCost(){
-        return c.getCost()+1;
+        //看类似的两个 这里 无所谓有没有constructor  super 和comp 这里都可以work
+        return super.getCost()+1;
 
     }
     public String getIngre(){
@@ -58,7 +60,7 @@ class WithMilk extends CoffeeDec{
 
     }
     public String getIngre(){
-        return c.getIngre()+" milk,";
+        return super.getIngre()+" milk,";
     }
 
 }
