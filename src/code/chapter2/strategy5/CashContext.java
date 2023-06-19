@@ -9,6 +9,7 @@ public class CashContext {
     public CashContext(int cashType){
         switch(cashType){
             case 1:
+                // 这里switch 然后根据输入不同this。cs 是不同的 体现了factory
                 this.cs = new CashNormal();
                 break;
             case 2:

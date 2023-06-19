@@ -33,10 +33,12 @@ public class Test {
 				
 				//根据用户输入，将对应的策略对象作为参数传入CashContext对象中
 				//主要是这里 根据 discount 是 1 2 3 来create 不同的 cashcontext
+				//这里是由于input 不同建立不同的 cc 子类 所以这里体现了 factory
 				CashContext cc = new CashContext(discount);
 				
 				//通过Context的getResult方法的调用，可以得到收取费用的结果
 				//让具体算法与客户进行了隔离
+				//这里 由于cc 的子class 由于 factory的构建不同 最后 导致 getResult的不同 这里体现了 strategy
 				totalPrices = cc.getResult(price,num);
 				
 				total = total + totalPrices;
