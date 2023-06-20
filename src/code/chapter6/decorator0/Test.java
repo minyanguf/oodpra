@@ -69,7 +69,8 @@ class ConcreteDecoratorA extends Decorator {
     public void Operation() {
         System.out.println(component);
         System.out.println("111111111");
-        super.Operation();//首先运行了原有Component的Operation()
+        //这里不用super 也可以 实际上 super 还是 去调用了 上面的component（）， super 更好些 还可以检查null
+        component.Operation();//首先运行了原有Component的Operation()
 
         this.addedState = "具体装饰对象A的独有操作";//再执行本类独有功能
         System.out.println(this.addedState);
