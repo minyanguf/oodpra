@@ -16,6 +16,7 @@ class VendingMachine {
     public VendingMachine() {
         currentInsertedMoney = 0;
         currentSelectedItem = null;
+        //这里很关键 vm 里有3个state     那个state 里面又有vm   和book example 类似 book exmaple 是通过  state method 时候 把vm context 当作方法parameter 去 state classs 里
         noSelectionState = new NoSelectionState(this);
         hasSelectionState = new HasSelectionState(this);
         insertedMoneyState = new InsertedMoneyState(this);
@@ -35,7 +36,7 @@ class VendingMachine {
         return currentSelectedItem;
     }
 
-    public void insertMoney(int amount) {
+    public void insertMoneyVM(int amount) {
         this.currentInsertedMoney += amount;
     }
 
@@ -68,7 +69,7 @@ class VendingMachine {
         state = insertedMoneyState;
     }
 
-    public void selectItem(String selection) {
+    public void selectItemVM(String selection) {
         state.selectItem(selection);
     }
 
@@ -76,7 +77,7 @@ class VendingMachine {
         state.insertMoney(value);
     }
 
-    public void executeTransaction() {
+    public void executeTransactionVM() {
         state.executeTransaction();
     }
 
@@ -110,9 +111,9 @@ public class Test {
 //        vm.selectItem("Coke");
 
 //        vm.executeTransaction();
-        vm.selectItem("Coke");
-        vm.insertMoney(500);
-        vm.executeTransaction();
+        vm.selectItemVM("Coke");
+        vm.insertMoneyVM(500);
+        vm.executeTransactionVM();
 
 
 
@@ -198,7 +199,7 @@ class HasSelectionState extends AbstractState{
     @Override
     public void insertMoney(int value) {
         // TODO Auto-generated method stub
-        vendingMachine.insertMoney(value);
+        vendingMachine.insertMoneyVM(value);
         vendingMachine.changeToInsertedMoneyState();
     }
 
@@ -249,7 +250,7 @@ class InsertedMoneyState extends AbstractState{
     @Override
     public void insertMoney(int value) {
         // TODO Auto-generated method stub
-        vendingMachine.insertMoney(value);
+        vendingMachine.insertMoneyVM(value);
     }
 
     @Override
