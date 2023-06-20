@@ -1,5 +1,5 @@
 // 本题解信息来源于【九章算法】。请勿进行商业转载，非商业转载请注明出处。
-package state.example
+package state.example;
 
 import java.util.HashMap;
 
