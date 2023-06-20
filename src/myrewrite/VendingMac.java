@@ -2,12 +2,14 @@ package myrewrite;
 
 public class VendingMac {
     public VendingMac() {
+        noselect=new NoselectState(this);
         this.state =noselect;
+        selected= new SelectedState(this);
     }
-    public VendingMac(Istate state) {
-        this.state =noselect;
-        this.state = state;
-    }
+//    public VendingMac(Istate state) {
+//        this.state =noselect;
+//        this.state = state;
+//    }
 
     public Istate getState() {
         return state;
@@ -19,8 +21,8 @@ public class VendingMac {
 
     private Istate state;
     //这些 卸载 default construcotr 比较好
-    Istate noselect = new NoselectState(this);
-    Istate selected = new SelectedState(this);
+    private Istate noselect;
+    private Istate selected;
 
     public double getMoney() {
         return money;
@@ -36,12 +38,16 @@ public class VendingMac {
         this.state.insertMoney(num);
     }
 
+    public void toSelectState(){
+        this.state=selected;
+    }
+
 }
 interface Istate{
     public void insertMoney(double num);
 }
 abstract class Abstate implements Istate{
-    public VendingMac vm;
+    protected VendingMac vm;
 
     public Abstate(VendingMac vm) {
         this.vm = vm;
@@ -72,7 +78,7 @@ class NoselectState extends Abstate{
         vm.setMoney(num+existing);
         System.out.println(vm.getMoney());
         //move to next state
-        vm.setState(vm.selected);
+        vm.toSelectState();
 
     }
 }
