@@ -205,7 +205,18 @@ class HasSelectionState extends AbstractState{
     @Override
     public void executeTransaction() {
         // TODO Auto-generated method stub
-        System.out.println("You need to insert money first");
+        //System.out.println("You need to insert money first");
+        // TODO Auto-generated method stub
+        int diff = vendingMachine.getInsertedMoney() - vendingMachine.getSalePrice();
+        if(diff >= 0){
+            System.out.println("Executing transaction, will return you : " + diff + " money and item: " + vendingMachine.getSelectedItem());
+            vendingMachine.setSelectedItem(null);
+            vendingMachine.emptyInsertedMoney();
+            vendingMachine.changeToNoSelectionState();
+        }
+        else{
+            System.out.println("Not enough money, please insert " + (-diff) + " more.");
+        }
     }
 
     @Override
