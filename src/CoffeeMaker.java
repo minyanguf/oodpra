@@ -45,7 +45,7 @@ abstract class CoffeeDec implements Coffee{
 class WithSugar extends CoffeeDec{
     public double getCost(){
         //看类似的两个 这里 无所谓有没有constructor  super 和comp 这里都可以work
-        return super.getCost()+1;
+        return c.getCost()+1;
 
     }
     public String getIngre(){

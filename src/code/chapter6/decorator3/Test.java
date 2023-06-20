@@ -21,11 +21,15 @@ public class Test {
         TShirts dtx = new TShirts();        //生成T恤实例
         dtx.decorate(kk);                   //T恤装饰“有垮裤球鞋装饰的小菜”
 
+        BigTrouser kk2 = new BigTrouser();        //生成T恤实例
+        kk2.decorate(dtx);
+
+
         //这里最外层是dtx 然后kk 然后pqx 最后xc 所以实际运行结果就是先 T恤  垮裤 球鞋装扮的小菜
         //第一种装扮：
         // 大T恤 垮裤 球鞋装扮的小菜
 
-        dtx.show();                         //执行形象展示
+        kk2.show();                         //执行形象展示
 
 //        System.out.println(" 第二种装扮：");
 //
