@@ -12,25 +12,27 @@ public class Test {
         //紧急项目
         Work emergencyProjects = new Work();
         emergencyProjects.setHour(9);
-        emergencyProjects.writeProgram();
+        emergencyProjects.callStateWriteProgram();
         emergencyProjects.setHour(10);
-        emergencyProjects.writeProgram();
+        //Work class have state field,  某些条件下callStateWriteProgram 改变了 work里的state的子类具体类型 所以可以发生状态转移
+        //为了改变 work里的state 所以callStateWriteProgram 的method 选哟传入work as parameter
+        emergencyProjects.callStateWriteProgram();
         emergencyProjects.setHour(12);
-        emergencyProjects.writeProgram();
+        emergencyProjects.callStateWriteProgram();
         emergencyProjects.setHour(13);
-        emergencyProjects.writeProgram();
+        emergencyProjects.callStateWriteProgram();
         emergencyProjects.setHour(14);
-        emergencyProjects.writeProgram();
+        emergencyProjects.callStateWriteProgram();
         emergencyProjects.setHour(17);
 
         emergencyProjects.setWorkFinished(false);
         //emergencyProjects.setWorkFinished(true);
 
-        emergencyProjects.writeProgram();
+        emergencyProjects.callStateWriteProgram();
         emergencyProjects.setHour(19);
-        emergencyProjects.writeProgram();
+        emergencyProjects.callStateWriteProgram();
         emergencyProjects.setHour(22);
-        emergencyProjects.writeProgram();
+        emergencyProjects.callStateWriteProgram();
 
 		System.out.println();
 		System.out.println("**********************************************");
@@ -54,7 +56,7 @@ class ForenoonState extends State {
         else {
             w.setState(new NoonState());
 
-            w.writeProgram();
+            w.callStateWriteProgram();
         }
     }
 }
@@ -67,7 +69,7 @@ class NoonState extends State {
         }
         else {
             w.setState(new AfternoonState());
-            w.writeProgram();
+            w.callStateWriteProgram();
         }
     }
 }
@@ -81,7 +83,7 @@ class AfternoonState extends State {
         else {
             w.setState(new EveningState());
 
-            w.writeProgram();
+            w.callStateWriteProgram();
         }
    }  
 }
@@ -93,7 +95,7 @@ class EveningState extends State {
         if (w.getWorkFinished())  
         {
             w.setState(new RestState());
-            w.writeProgram();
+            w.callStateWriteProgram();
         }
         else
         {
@@ -102,7 +104,7 @@ class EveningState extends State {
             }
             else {
               w.setState(new SleepingState());
-              w.writeProgram();
+              w.callStateWriteProgram();
             }
         }
     }
@@ -135,7 +137,7 @@ class Work {
         this.current = value;
     }
     //写代码的状态
-    public void writeProgram() {
+    public void callStateWriteProgram() {
         this.current.writeProgram(this);
     }
 
