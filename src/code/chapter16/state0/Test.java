@@ -10,7 +10,8 @@ public class Test {
 
 
         Context c = new Context(new ConcreteStateA());
-        
+
+        //这里主要都是 改变 c filed 然后一直call context。request
         c.request();
         c.request();
         c.request();
@@ -63,7 +64,8 @@ class Context {
         this.state = value;
         System.out.println("当前状态:" + this.state.getClass().getName());
     }
-    
+    //这里是关键 选哟call state。handle     在stateclass 里  得到 context 的class 然后 把 context里的state 改成另一个子类
+
     public void request()
     {
         this.state.handle(this); 
